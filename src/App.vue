@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <h1 class="uk-heading-small">Employees</h1>
+    <employee-form />
     <employee-table :employees="employees"/>
   </div>
 </template>
 
 <script>
+import EmployeeForm from '@/components/EmployeeForm.vue'
 import EmployeeTable from '@/components/EmployeeTable.vue'
 
 export default {
   name: 'app',
   components: {
+    EmployeeForm,
     EmployeeTable,
   },
   data() {
