@@ -16,7 +16,7 @@
   <div class="uk-margin">
     <div class="uk-inline">
       <span class="uk-form-icon" uk-icon="icon: mail"></span>
-      <input type="text"
+      <input type="email"
              :class="{ 'has-error': submitting && invalidEmail }"
              v-model="employee.email"
              @focus="clearStatus"
