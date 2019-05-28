@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h1 class="uk-heading-small">Employees</h1>
-    <employee-table :employees="employees"/>
+    <employee-table :employees="employees" @delete:employee="deleteEmployee" />
   </div>
 </template>
 
@@ -31,6 +31,13 @@ export default {
       ],
     }
   },
+  methods: {
+    deleteEmployee(id) {
+    this.employees = this.employees.filter(
+      employee => employee.id !== id
+    )
+    }
+  }
 }
 </script>
 
