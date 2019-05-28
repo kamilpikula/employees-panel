@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <h1 class="uk-heading-small">Employees</h1>
+    <employee-form @add:employee="addEmployee" />
     <employee-table :employees="employees"/>
   </div>
 </template>
 
 <script>
+import EmployeeForm from '@/components/EmployeeForm.vue'
 import EmployeeTable from '@/components/EmployeeTable.vue'
 
 export default {
   name: 'app',
   components: {
+    EmployeeForm,
     EmployeeTable,
   },
   data() {
@@ -31,6 +34,15 @@ export default {
       ],
     }
   },
+  methods: {
+    addEmployee(employee) {
+      const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0;
+      const id = lastId + 1;
+      const newEmployee = { ...employee, id};
+
+      this.employees = [...this.employees, newEmployee];
+    }
+  }
 }
 </script>
 
