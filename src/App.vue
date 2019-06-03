@@ -2,7 +2,9 @@
   <div id="app">
     <h1 class="uk-heading-small">Employees</h1>
     <employee-form @add:employee="addEmployee" />
-    <employee-table :employees="employees" @delete:employee="deleteEmployee" />
+    <employee-table :employees="employees"
+                    @delete:employee="deleteEmployee"
+                    @edit:employee="editEmployee" />
   </div>
 </template>
 
@@ -20,14 +22,17 @@ export default {
     return {
       employees: [
         {
+          id: 1,
           name: 'Jakub Nowak',
           email: 'jnowak@poczta.onet.pl',
         },
         {
+          id: 2,
           name: 'Dorota Kowalska',
           email: 'dkowalska19@gmail.com',
         },
         {
+          id: 3,
           name: 'Krzysztof Ignaczak',
           email: 'ignaczak.krzysztof@gmail.com',
         },
@@ -47,6 +52,12 @@ export default {
     this.employees = this.employees.filter(
       employee => employee.id !== id
     )
+    },
+
+    editEmployee(id, updatedEmployee) {
+      this.employees = this.employees.map(employee =>
+        employee.id == id ? updatedEmployee : employee
+      )
     }
   }
 }
