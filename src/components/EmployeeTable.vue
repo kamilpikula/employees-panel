@@ -27,7 +27,7 @@
           <td v-if="editing === employee.id">
             <button @click="editEmployee(employee)"
                     class="uk-button uk-button-default">Save</button>
-            <button @click="cancelEdit(employee)"
+            <button @click="editing = null"
                     class="uk-button uk-button-danger">Cancel</button>
           </td>
           <td v-else>
@@ -54,15 +54,8 @@ export default {
     }
   },
   methods: {
-    editMode(employee) {
+    editMode(id) {
       this.editing = id
-      this.cachedEmployee = Object.assign({}, employee)
-      this.editing = employee.id
-    },
-
-    cancelEdit(employee) {
-      Object.assign(employee, this.cachedEmployee)
-      this.editing = null
     },
 
     editEmployee(employee) {
