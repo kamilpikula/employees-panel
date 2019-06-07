@@ -20,26 +20,23 @@ export default {
   },
   data() {
     return {
-      employees: [
-        {
-          id: 1,
-          name: 'Jakub Nowak',
-          email: 'jnowak@poczta.onet.pl',
-        },
-        {
-          id: 2,
-          name: 'Dorota Kowalska',
-          email: 'dkowalska19@gmail.com',
-        },
-        {
-          id: 3,
-          name: 'Krzysztof Ignaczak',
-          email: 'ignaczak.krzysztof@gmail.com',
-        },
-      ],
+      employees: [],
     }
   },
+  mounted() {
+    this.getEmployees()
+  },
   methods: {
+
+    async getEmployees() {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users')
+        const data = await response.json()
+        this.employees = data
+      } catch (error) {
+          console.error(error)
+        }
+    },
     addEmployee(employee) {
       const lastId = this.employees.length > 0 ? this.employees[this.employees.length - 1].id : 0;
       const id = lastId + 1;
@@ -59,7 +56,7 @@ export default {
         employee.id == id ? updatedEmployee : employee
       )
     }
-  }
+  },
 }
 </script>
 
