@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <h1 class="uk-heading-small">Employees</h1>
     <employee-form @add:employee="addEmployee" />
     <employee-table :employees="employees"
                     @delete:employee="deleteEmployee"
