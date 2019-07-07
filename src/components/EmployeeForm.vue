@@ -1,6 +1,6 @@
 <template>
-<div class="uk-card uk-card-default uk-card-body">
-  <h1 class="uk-heading-small">Employees</h1>
+<div class="uk-card uk-card-default uk-card-body uk-card-hover uk-flex uk-flex-column uk-flex-middle">
+  <h1 class="uk-heading-small">Employees panel</h1>
 <form @submit.prevent="handleSubmit">
   <div class="uk-margin">
     <div class="uk-inline">

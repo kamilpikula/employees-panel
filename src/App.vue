@@ -33,7 +33,7 @@ export default {
         const data = await response.json()
         this.employees = data
       } catch (error) {
-          console.error(error)
+          return error;
         }
     },
     addEmployee(employee) {
@@ -45,6 +45,7 @@ export default {
     },
 
     deleteEmployee(id) {
+    alert("Are you sure?")
     this.employees = this.employees.filter(
       employee => employee.id !== id
     )
